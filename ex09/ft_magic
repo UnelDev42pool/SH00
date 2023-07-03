@@ -1,16 +1,1 @@
-for file in *
-do
-    if [[ "$file" == *".42" ]]
-    then
-        if [ "$(stat -c %s "$file")" -ge 42 ]
-        then
-            byte=$(dd if="$file" bs=1 skip=41 count=1 2>/dev/null)
-            byte2=$(dd if="$file" bs=1 skip=42 count=1 2>/dev/null)
-
-            if ([ "$byte" == "4" ] && [ "$byte2" == "2" ])
-            then
-                echo "$file"
-            fi
-        fi
-    fi
-done
+42 string 42 42 file
